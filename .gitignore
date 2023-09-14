@@ -1,0 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    .gitignore                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kryrodri <kryrodri@student.42barcel>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/14 14:24:55 by kryrodri          #+#    #+#              #
+#    Updated: 2023/09/14 14:25:07 by kryrodri         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Ignora archivos del sistema Mac 
+.DS_store
+
+# Ignora la carpeta node_modules
+node_modules
