@@ -1,6 +1,3 @@
-hol
-a
-fin1
-f1.5
-uno uno uno final2
-cuatro cuatro cuatro cuatro cuatro final3
+0123
+45
+67891011

@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:52:10 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/08/31 11:17:49 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:44:54 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 
-int main (int argc, char **argv)
+int main (void)
 {
     int fd = open(".archivo.txt", O_RDONLY);
   
@@ -27,31 +27,31 @@ int main (int argc, char **argv)
     int q_chars = read(fd, lectura, 50);
     // return:
     // Q de leido
-    // 0 si llega al final
+    // 0 si llega al final -> que sigui 0, no implica que no hagi llegit res
     // -1 si hay algun error de lectura
 
     lectura[q_chars] = '\0';
     printf("%s, %d\n", "1- lectura", q_chars);
     printf("%s\n", lectura);
 
-    q_chars = read(fd, lectura, 50);
+    q_chars = read(fd, lectura, 10);
     lectura[q_chars] = '\0';
     printf("%s, %d\n", "2- lectura", q_chars);
     printf("%s", lectura); 
     
-    q_chars = read(fd, lectura, 50);
-    lectura[q_chars] = '\0';
-    printf("\n%s, %d\n", "3- lectura", q_chars);
-    printf("%s", lectura);
+    // q_chars = read(fd, lectura, 10);
+    // lectura[q_chars] = '\0';
+    // printf("\n%s, %d\n", "3- lectura", q_chars);
+    // printf("%s", lectura);
 
-    // // get_next_line(fd);
-    close(fd);
+    // // // get_next_line(fd);
+    // close(fd);
 
-    // Buscando el error:
-    q_chars = read(fd, lectura, 50);
-    lectura[q_chars] = '\0';
-    printf("\n%s, %d\n", "4- lectura", q_chars);
-    printf("%s", lectura);
+    // // Buscando el error:
+    // q_chars = read(fd, lectura, 10);
+    // lectura[q_chars] = '\0';
+    // printf("\n%s, %d\n", "4- lectura", q_chars);
+    // printf("%s", lectura);
 
 
     free(lectura);
