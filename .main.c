@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:52:10 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/20 18:09:06 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:33:43 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main (void)
 	printf("%s\n", get_next_line(fd));
 	printf("2-linea\n");
 	printf("%s\n", get_next_line(fd));
-	// printf("3-linea\n");
-	// printf("%s\n", get_next_line(fd));
+	printf("3-linea\n");
+	printf("%s\n", get_next_line(fd));
 
 	close(fd);
 	return (0);
