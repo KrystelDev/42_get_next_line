@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 11:56:22 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:41:50 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_look_for_line(char *s) // '\n' o '\0'
 
     while (s[i_line] != '\0' && s[i_line] != '\n')
         (i_line)++;
-    if (s[i_line] != '\n' || s[i_line] != '\0')
+    if (s[i_line] != '\n')
         i_line = -1; // No se encontró el '\n'
 	return (i_line);
 }
