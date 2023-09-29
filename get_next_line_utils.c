@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 19:37:27 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:50:39 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	{
 		if (s2)
 			ft_clean(&s2);
+		ft_clean(&s1);
 		return (NULL);
 	}
 	i = 0;
@@ -64,8 +65,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	new_string[i] = '\0';
-	if(s1)
-		ft_clean(&s1);
+	ft_clean(&s1);
 	return (new_string);
 }
 
