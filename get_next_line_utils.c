@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 19:23:37 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:26:07 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_string;
 	size_t	i;
+	size_t	j;
     
 	new_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!new_string)
@@ -54,11 +55,12 @@ char	*ft_strjoin(char *s1, char *s2)
 		new_string[i] = s1[i];
 		i++;
 	}
-	while (s2 && *s2)
+	j = 0;
+	while (s2 && s2[j])
 	{
-		new_string[i] = *s2;
+		new_string[i] = s2[j];
 		i++;
-		s2++;
+		j++;
 	}
 	new_string[i] = '\0';
 	// if(s2)
