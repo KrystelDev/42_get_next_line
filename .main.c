@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:52:10 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/28 13:33:43 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:39:02 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 int main (void)
 {
 	int fd = open(".archivo.txt", O_RDONLY);
-	// un while per veure com va fins el final.
-	printf("1-linea\n");
-	printf("%s\n", get_next_line(fd));
-	printf("2-linea\n");
-	printf("%s\n", get_next_line(fd));
-	printf("3-linea\n");
-	printf("%s\n", get_next_line(fd));
-
+	char *line = "star";
+	int	i = 1;
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		printf("%d-linea\n", i);
+		printf("%s\n", line);
+		i++;
+	}
 	close(fd);
 	return (0);
 }

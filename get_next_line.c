@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:07 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/28 15:10:36 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 13:08:14 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
             // Lee
             // Guarda en pendiente
             // vuelve al punto 1
+
+ void ft_clean(char **brut)
+ {
+	free(*brut);
+	*brut = NULL;
+ }
 
 char *get_next_line(int fd)
 {
@@ -53,8 +59,14 @@ char *get_next_line(int fd)
     {
         // No -> Concatena lo pendiente con una nueva lectura y vuelve al punto 1.1
         result = ft_strjoin(result, reading);
-        free(reading);
-        reading = NULL;
+        // free(reading);
+        // reading = NULL;
+        ft_clean(&reading);
+        // if (!result)
+        // {
+        //     return (NULL);
+        // } 
+        
         // "volver al punto 1.1"
             while (!reading) //    while (!reading || !q_chars)
             {
@@ -64,10 +76,15 @@ char *get_next_line(int fd)
             // 1-2 No pendiente ->
                     // Lee
                 q_chars = read(fd, reading, BUFFER_SIZE);
-                if (q_chars <= 0) 
+                if (q_chars < 0) 
                 {
                     // -1 si hay algun error de reading
                     return NULL;
+                }
+                if (q_chars == 0 && result) // Sí -> Guarda en result desde el inicio de pendiente hasta el final.
+                {
+                    ft_clean(&reading);
+                    return (result);
                 }
                 reading[q_chars] = '\0';
             }
@@ -78,7 +95,7 @@ char *get_next_line(int fd)
         result = ft_strjoin(result, ft_substr(reading, 0, ft_look_for_line(reading)));
         reading = ft_substr(reading, ft_look_for_line(reading)+1, ft_strlen(reading));
     }
-    if (q_chars == 0) // Sí -> Guarda en result desde el inicio de pendiente hasta el final.
+    if (q_chars == 0 && !result) // Sí -> Guarda en result desde el inicio de pendiente hasta el final.
     {
         result = "\0";
         free(reading);

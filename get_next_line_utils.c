@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/20 17:52:58 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:56:22 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int ft_look_for_line(char *s) // '\n' o '\0'
 
     while (s[i_line] != '\0' && s[i_line] != '\n')
         (i_line)++;
-    if (s[i_line] != '\n')
+    if (s[i_line] != '\n' || s[i_line] != '\0')
         i_line = -1; // No se encontró el '\n'
 	return (i_line);
 }
@@ -41,10 +41,13 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_string;
 	size_t	i;
-
+    
 	new_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!new_string)
+	{
+		ft_clean(&s2);
 		return (NULL);
+	}
 	i = 0;
 	while (s1 && s1[i])
 	{
@@ -117,4 +120,3 @@ char	*ft_strjoin(char *s1, char *s2)
 // 	ft_strlcpy(substring, s, len + 1);
 // 	return (substring);
 // }
- 
