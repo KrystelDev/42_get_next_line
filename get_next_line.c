@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:07 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 19:41:32 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 20:05:43 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@
             // Lee
             // Guarda en pendiente
             // vuelve al punto 1
+
+//  void	*ft_calloc(size_t num_elements, size_t element_size)
+// {
+// 	char	*copia_cpy;
+//     size_t	i;
+
+// 	copia_cpy = malloc(num_elements * element_size);
+// 	if (copia_cpy == NULL)
+// 	{
+// 		return (NULL);
+// 	}
+// 	i = 0;
+// 	while (i < num_elements * element_size)
+// 	{
+// 		((char *)copia_cpy)[i] = '\0';
+// 		i++;
+// 	}
+// 	return (copia_cpy);
+// }
+// reading = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 
  void ft_clean(char **brut)
  {
@@ -45,7 +65,13 @@ char *get_next_line(int fd)
     {
         reading = malloc(BUFFER_SIZE + 1);
         if(!reading)
+        {
+            // if (result)
+            // {
+            //     ft_clean(&result);
+            // }
             return (NULL);
+        }
     // 1-2 No pendiente ->
             // Lee
         q_chars = read(fd, reading, BUFFER_SIZE);
