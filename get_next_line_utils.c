@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 19:26:07 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:37:27 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	new_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!new_string)
 	{
-		// ft_clean(&s2);
+		if (s2)
+			ft_clean(&s2);
 		return (NULL);
 	}
 	i = 0;
@@ -63,8 +64,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	new_string[i] = '\0';
-	// if(s2)
-	// 	ft_clean(&s2);
+	if(s1)
+		ft_clean(&s1);
 	return (new_string);
 }
 
