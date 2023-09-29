@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:07 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 16:46:41 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:22:31 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char *get_next_line(int fd)
     result = NULL; // lo que devuelve la función principal.
 
 // Controlo el error de open.
-    if (fd < 0 || BUFFER_SIZE <= 0)
+    if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, 0,0)))
         return (NULL);
 
 // 1- Hay algo pendiente a devolver ? >> while hasta que sea Sí o Nada que leer
@@ -64,6 +64,8 @@ char *get_next_line(int fd)
     {
         // No -> Concatena lo pendiente con una nueva lectura y vuelve al punto 1.1
         result = ft_strjoin(result, reading);
+        if(!result)
+            return (NULL);
         ft_clean(&reading);
         
         // "volver al punto 1.1"
@@ -92,6 +94,11 @@ char *get_next_line(int fd)
     if (ft_look_for_line(reading) != -1)
     {
         result = ft_strjoin(result, ft_substr(reading, 0, ft_look_for_line(reading)+1));
+        if (!result)
+        {
+            return (NULL);
+        }
+        
         reading = ft_substr(reading, ft_look_for_line(reading)+1, ft_strlen(reading));
     }
     if (q_chars == 0)
