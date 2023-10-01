@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:27 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 20:14:25 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:29:14 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int ft_look_for_line(char *s) // '\n' o '\0'
 	return (i_line);
 }
 
-size_t	ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	size_t	len;
+	int	len;
 
 	if (!s)
 		return (0);
@@ -40,8 +40,8 @@ size_t	ft_strlen(char *s)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_string;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
     
 	new_string = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!new_string)
@@ -81,10 +81,10 @@ char	*ft_strjoin(char *s1, char *s2)
 // 	return (new_string);
 // }
 
- char	*ft_substr(char *s, size_t start, size_t len)
+ char	*ft_substr(char *s, int start, int len)
 {	
 	char	*result;
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -110,7 +110,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (result);
 }
 
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// char	*ft_substr(char const *s, unsigned int start, int len)
 // {
 // 	char	*substring;
 

@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 12:52:10 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/28 18:39:02 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:34:37 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main (void)
 	{
 		line = get_next_line(fd);
 		printf("%d-linea\n", i);
-		printf("%s\n", line);
+		printf("%s", line);
 		i++;
 	}
 	close(fd);

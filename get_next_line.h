@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:46 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 18:50:28 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:29:13 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 #include <limits.h>
 
 char	*get_next_line(int fd);
-int		ft_look_for_line(char *s);
-size_t	ft_strlen(char *s);
+int	ft_look_for_line(char *s);
+int	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_substr(char *s, size_t start, size_t len);
+char	*ft_substr(char *s, int start, int len);
 void	ft_clean(char **brut);
 
 #endif

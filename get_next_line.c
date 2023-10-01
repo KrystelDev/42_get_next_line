@@ -6,7 +6,7 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:07 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/09/29 20:05:43 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/01 15:53:29 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
             // Guarda en pendiente
             // vuelve al punto 1
 
-//  void	*ft_calloc(size_t num_elements, size_t element_size)
+//  void	*ft_calloc(int num_elements, int element_size)
 // {
 // 	char	*copia_cpy;
-//     size_t	i;
+//     int	i;
 
 // 	copia_cpy = malloc(num_elements * element_size);
 // 	if (copia_cpy == NULL)
@@ -111,6 +111,8 @@ char *get_next_line(int fd)
                 if (q_chars == 0 && result) // Sí -> Guarda en result desde el inicio de pendiente hasta el final.
                 {
                     ft_clean(&reading);
+                    if(result && result[0] == '\0')
+                        return(NULL);
                     return (result);
                 }
                 reading[q_chars] = '\0';
@@ -124,11 +126,12 @@ char *get_next_line(int fd)
         {
             return (NULL);
         }
-        
-        reading = ft_substr(reading, ft_look_for_line(reading)+1, ft_strlen(reading));
+        reading = ft_substr(reading, ft_look_for_line(reading)+1, ft_strlen(reading)-1);
+      
     }
     if (q_chars == 0)
         ft_clean(&reading);
-
+    if(result && result[0] == '\0')
+        return(NULL);
     return (result);
 }
