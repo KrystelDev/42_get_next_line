@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 17:12:34 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/10/10 17:12:35 by kryrodri         ###   ########.fr       */
+/*   Created: 2023/10/10 17:11:41 by kryrodri          #+#    #+#             */
+/*   Updated: 2023/10/10 17:12:03 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int ft_strlen(const char *s)
 {
@@ -33,7 +33,8 @@ char *ft_strjoin(char *s1, char *s2)
 	new_string = (char *)ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 1), sizeof(char));
 	if (!new_string)
 	{
-		return (ft_clean(&s1, &s2));
+		ft_clean(&s1, &s2);
+		return (NULL);
 	}
 	i = 0;
 	while (s1 && s1[i])

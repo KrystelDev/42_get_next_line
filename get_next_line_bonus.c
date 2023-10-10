@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 17:12:38 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/10/10 17:12:39 by kryrodri         ###   ########.fr       */
+/*   Created: 2023/10/10 17:12:25 by kryrodri          #+#    #+#             */
+/*   Updated: 2023/10/10 17:12:27 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char *ft_clean(char **s1, char **s2)
 {
@@ -126,16 +126,20 @@ char *save_reading(char *reading)
 char *get_next_line(int fd)
 {
 	char *line;
-	static char *reading = NULL;
+	static char *reading[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	reading = read_fd(fd, reading);
-	if (!reading)
+	reading[fd] = read_fd(fd, reading[fd]);
+	if (!reading[fd])
 		return (NULL);
-	line = save_line(reading);
+	line = save_line(reading[fd]);
 	if (!line)
-		return (ft_clean(&line, &reading));
-	reading = save_reading(reading);
+	{
+		free(reading[fd]);
+		reading[fd] = NULL;
+	}
+	else
+		reading[fd] = save_reading(reading[fd]);
 	return (line);
 }
