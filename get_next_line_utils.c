@@ -6,15 +6,15 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:12:34 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/10/10 17:12:35 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:48:29 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (!s)
@@ -24,13 +24,33 @@ int ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_strjoin(char *s1, char *s2)
+void	*ft_calloc(size_t num_elements, size_t element_size)
 {
-	char *new_string;
-	int i;
-	int j;
-	
-	new_string = (char *)ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 1), sizeof(char));
+	char	*copia;
+	size_t	i;
+	size_t	j;
+
+	j = num_elements * element_size;
+	copia = malloc(j);
+	if (!copia)
+		return (NULL);
+	i = 0;
+	while (i < j)
+	{
+		((char *)copia)[i] = '\0';
+		i++;
+	}
+	return (copia);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*new_string;
+	int		i;
+	int		j;
+
+	j = ft_strlen(s1) + ft_strlen(s2);
+	new_string = (char *)ft_calloc((j + 1), sizeof(char));
 	if (!new_string)
 	{
 		return (ft_clean(&s1, &s2));
@@ -44,18 +64,16 @@ char *ft_strjoin(char *s1, char *s2)
 	j = 0;
 	while (s2 && s2[j])
 	{
-		new_string[i] = s2[j];
-		i++;
-		j++;
+		new_string[i++] = s2[j++];
 	}
 	new_string[i] = '\0';
 	free(s1);
 	return (new_string);
 }
 
-char *ft_strchr(char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)

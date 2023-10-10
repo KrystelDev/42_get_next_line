@@ -6,13 +6,13 @@
 /*   By: kryrodri <kryrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 17:12:25 by kryrodri          #+#    #+#             */
-/*   Updated: 2023/10/10 17:12:27 by kryrodri         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:35:13 by kryrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char *ft_clean(char **s1, char **s2)
+char	*ft_clean(char **s1, char **s2)
 {
 	if (s1 && *s1)
 	{
@@ -26,29 +26,11 @@ char *ft_clean(char **s1, char **s2)
 	}
 	return (NULL);
 }
-void	*ft_calloc(size_t num_elements, size_t element_size)
-{
-	char	*copia;
-	size_t		i;
-	size_t		j;
 
-	j = num_elements * element_size;
-	copia = malloc(j);
-	if (!copia)
-		return (NULL);
-	i = 0;
-	while (i < j)
-	{
-		((char *)copia)[i] = '\0';
-		i++;
-	}
-	return (copia);
-}
-
-char *read_fd(int fd, char *reading)
+char	*read_fd(int fd, char *reading)
 {
-	char *aux_reading;
-	int q_chars;
+	char	*aux_reading;
+	int		q_chars;
 
 	q_chars = 1;
 	aux_reading = (char *)ft_calloc((BUFFER_SIZE + 1), sizeof(char));
@@ -64,18 +46,18 @@ char *read_fd(int fd, char *reading)
 			aux_reading[q_chars] = '\0';
 			reading = ft_strjoin(reading, aux_reading);
 			if (!reading)
-				return(NULL);
+				return (NULL);
 		}
 	}
-	if(aux_reading)
+	if (aux_reading)
 		free(aux_reading);
 	return (reading);
 }
 
-char *save_line(char *reading)
+char	*save_line(char *reading)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	if (!reading[i])
@@ -99,11 +81,11 @@ char *save_line(char *reading)
 	return (line);
 }
 
-char *save_reading(char *reading)
+char	*save_reading(char *reading)
 {
-	int i;
-	int j;
-	char *new_reading;
+	int		i;
+	int		j;
+	char	*new_reading;
 
 	i = 0;
 	j = 0;
@@ -123,10 +105,10 @@ char *save_reading(char *reading)
 	return (new_reading);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char *line;
-	static char *reading[OPEN_MAX];
+	char		*line;
+	static char	*reading[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
